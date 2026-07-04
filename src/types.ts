@@ -19,7 +19,8 @@ export type Project = {
   description: string;
   why: string;
   tech: string[];
-  repo: string;
+  repo?: string;
+  status?: string;
 };
 
 export type EducationEntry = {

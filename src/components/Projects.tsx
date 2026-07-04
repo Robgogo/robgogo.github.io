@@ -43,12 +43,13 @@ const TiltCard = ({ project, index }: { project: Project; index: number }) => {
     >
       <motion.a
         href={project.repo}
-        target="_blank"
+        target={project.repo ? "_blank" : undefined}
         rel="noreferrer"
-        className="block h-full"
+        className={`block h-full ${project.repo ? "" : "cursor-default"}`}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}
+        onClick={project.repo ? undefined : (e) => e.preventDefault()}
       >
         <div
           ref={ref}
@@ -59,7 +60,13 @@ const TiltCard = ({ project, index }: { project: Project; index: number }) => {
             <span className="text-xs text-term-cyan truncate">
               {project.file}
             </span>
-            <span className="ml-auto text-xs text-term-muted">↗</span>
+            {project.repo ? (
+              <span className="ml-auto text-xs text-term-muted">↗</span>
+            ) : (
+              <span className="ml-auto text-[10px] text-term-yellow whitespace-nowrap">
+                🔒 {project.status}
+              </span>
+            )}
           </div>
           <div className="p-4 flex flex-col gap-3 grow text-xs sm:text-sm">
             <p className="text-term-fg leading-relaxed">

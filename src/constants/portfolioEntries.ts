@@ -142,6 +142,15 @@ const careerTimeline: CareerEntry[] = [
 
 const projects: Project[] = [
   {
+    name: "Bookd",
+    file: "bookd/",
+    description:
+      "A service booking venture for Ethiopia — web platform plus React Native app for barbershops, salons & spas, with OTP phone auth, local payment methods (Chapa, Telebirr, CBE Birr, Amole), and full Amharic localization.",
+    why: "booking infrastructure that fits how Ethiopia actually pays",
+    tech: ["TypeScript", "React Native", "Local payments", "Amharic i18n"],
+    status: "private · in development",
+  },
+  {
     name: "time-tracker",
     file: "time-tracker.ts",
     description:
@@ -151,15 +160,6 @@ const projects: Project[] = [
     repo: "https://github.com/Robgogo/time-tracker",
   },
   {
-    name: "kafka-tut",
-    file: "kafka-tut.ts",
-    description:
-      "A hands-on Kafka setup with docker-compose, KafkaJS, and Schema Registry — producing and consuming schema-validated messages locally.",
-    why: "learning Kafka properly meant building the whole pipeline myself",
-    tech: ["TypeScript", "Kafka", "Docker", "Schema Registry"],
-    repo: "https://github.com/Robgogo/kafka-tut",
-  },
-  {
     name: "Covid-19-SMS",
     file: "covid-19-sms.js",
     description:
@@ -167,15 +167,6 @@ const projects: Project[] = [
     why: "in 2020, SMS was the most reliable way to reach people back home",
     tech: ["Node.js", "Africa's Talking API", "SMS"],
     repo: "https://github.com/Robgogo/Covid-19-SMS",
-  },
-  {
-    name: "nestjs-template",
-    file: "nestjs-template.ts",
-    description:
-      "My opinionated NestJS boilerplate — the starting point I reach for when spinning up a new backend service.",
-    why: "stop re-wiring the same auth/config/lint setup on every new project",
-    tech: ["NestJS", "TypeScript", "Node.js"],
-    repo: "https://github.com/Robgogo/nestjs-template",
   },
   {
     name: "ChatAppSocketPython",
