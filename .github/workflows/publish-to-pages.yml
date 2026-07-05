@@ -43,7 +43,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-          node-version: "18.17.1"
+          node-version: "20.18.1"
 
       - name: Setup Pages 🔧
         id: pages
@@ -66,10 +66,10 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies 🥑
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      # `output: 'export'` in next.config.js writes ./out during build;
+      # the standalone `next export` command no longer exists in Next 14+
       - name: Build with Next.js 🍄
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Static HTML export with Next.js 🥯
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact ⛱️
         uses: actions/upload-pages-artifact@v1
         with:
