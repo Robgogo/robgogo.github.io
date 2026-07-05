@@ -160,6 +160,22 @@ const projects: Project[] = [
     repo: "https://github.com/Robgogo/time-tracker",
   },
   {
+    name: "River Basin Monitoring",
+    file: "river_monitor.ino",
+    description:
+      "My engineering thesis: a river level and flow monitoring system — ultrasonic and flow-meter sensors read by an Arduino, transmitting over a SIM800L GSM module to a Spring Boot API with a React dashboard. Built for early flood warnings to downstream communities and as a research dataset on river behavior.",
+    why: "communities downstream deserve a warning before the river arrives",
+    tech: [
+      "Arduino",
+      "SIM800L",
+      "Ultrasonic sensor",
+      "Flow meter",
+      "Spring Boot",
+      "React",
+    ],
+    repo: "https://github.com/Robgogo/Thesis",
+  },
+  {
     name: "Covid-19-SMS",
     file: "covid-19-sms.js",
     description:
