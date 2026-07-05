@@ -7,7 +7,10 @@ const CHARS =
 export const MatrixRain = ({ onDone }: { onDone: () => void }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const onDoneRef = useRef(onDone);
-  onDoneRef.current = onDone;
+
+  useEffect(() => {
+    onDoneRef.current = onDone;
+  });
 
   useEffect(() => {
     const canvas = canvasRef.current;

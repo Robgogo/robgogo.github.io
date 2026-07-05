@@ -1,14 +1,20 @@
 "use client";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 const THEMES = ["dracula", "gruvbox", "solarized"] as const;
 
+const emptySubscribe = () => () => {};
+
 export const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  // true on the client after hydration, false during SSR — avoids a
+  // mismatch since the persisted theme is only known in the browser
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   const current = mounted && theme ? theme : "dracula";
   const next = THEMES[(THEMES.indexOf(current as any) + 1) % THEMES.length];

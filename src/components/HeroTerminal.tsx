@@ -122,20 +122,10 @@ export const HeroTerminal = () => {
   useEffect(() => {
     if (bootStarted.current) return;
     bootStarted.current = true;
-    setLines([]);
 
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-
-    if (reduced) {
-      echoCmd("whoami");
-      push(whoamiOutput);
-      echoCmd("./welcome.sh");
-      push(welcomeOutput);
-      setBooted(true);
-      return;
-    }
 
     let cancelled = false;
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -151,6 +141,17 @@ export const HeroTerminal = () => {
     };
 
     (async () => {
+      await sleep(0);
+      if (cancelled) return;
+      setLines([]);
+      if (reduced) {
+        echoCmd("whoami");
+        push(whoamiOutput);
+        echoCmd("./welcome.sh");
+        push(welcomeOutput);
+        setBooted(true);
+        return;
+      }
       await sleep(500);
       await type("whoami");
       if (cancelled) return;
